@@ -1,13 +1,11 @@
 name: img2webp & Deploy
-#检测到分支变动就进行提交Actions，2020年10月后github新建仓库默认分支改为main，但是可以修改仓库的默认分支为master，修改方法请自行搜索
+
+# 在 Release 发布时 或 手动执行
+
 on:
-  push:
-    branches:
-      - master
-      # - main
-      # 注意若分支为main，则请修改后使用
-#    paths-ignore:
-#      - package.json
+  release:
+     types:
+       - published
 
   workflow_dispatch:
 
@@ -33,9 +31,9 @@ jobs:
         run: |
           npm install -g webp-batch-convert@0.1.2
           # 要注意这里的版本号需要添加，如果不添加默认使用@Latest会出现问题
-          cwebp-batch --in image/npmraw --out image/npmwebp -q 75 -quiet
+          cwebp-batch --in raw --out webp -q 75 -quiet
           # npx webp-batch-convert --in raw --out webp -q 75 -quiet
-          mv image/npmwebp/*.webp image/npm/
+          mv webp/*.webp image/npm/
           
       # 发布 NPM 包
       # 自行修改为自己的Github邮箱地址和用户名
@@ -51,8 +49,8 @@ jobs:
       # 删除 raw/ 和 webp/ 下的所有文件
       - name: Delete Files
         run: |
-          rm -rf image/npmwebp/*
-          rm -rf image/npmraw/*
+          rm -rf webp/*
+          rm -rf raw/*
           touch webp/.keep
           touch raw/.keep
           
