@@ -41,8 +41,8 @@ jobs:
       # 自行修改为自己的Github邮箱地址和用户名
       - name: Publish Package
         run: |
-          git config --global user.email "$GIT_EMAIL"
-          git config --global user.name "$GIT_USER"
+          git config --global user.email "martinchenypl@foxmail.com"
+          git config --global user.name "lblbk"
           npm version patch
           npm publish
         env:
