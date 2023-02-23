@@ -1,14 +1,15 @@
 name: img2webp & Deploy
 #检测到分支变动就进行提交Actions，2020年10月后github新建仓库默认分支改为main，但是可以修改仓库的默认分支为master，修改方法请自行搜索
 on:
-  push:
-    branches:
-      - master
-      # - main
-      # 注意若分支为main，则请修改后使用
-#    paths-ignore:
-#      - package.json
-
+  release:
+     types:
+       - published
+#   push:
+#     branches:
+#       # 注意若分支为main，则请修改后使用
+#       - master
+#       # - main
+  
   workflow_dispatch:
 
 jobs:
