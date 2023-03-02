@@ -57,8 +57,8 @@ jobs:
 #           touch webp/.keep
 #           touch raw/.keep
           
-      - name: Push
-        run: |
-          git add -A
-          git commit -m "Publish"
-          git push origin master
+#       - name: Push
+#         run: |
+#           git add -A
+#           git commit -m "Publish"
+#           git push origin master
